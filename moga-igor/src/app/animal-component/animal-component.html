@@ -1,1 +1,10 @@
-<p>animal-component works!</p>
+<ul class="list-group">
+  @for (animal of animals; track animal.name) {
+    <li class="list-group-item">
+      {{ animal.emoji }}
+      {{ animal.name }}
+    </li>
+  } @empty {
+    <li class="list-group-item text-muted">Nessun animale in lista</li>
+  }
+</ul>

@@ -1,1 +1,10 @@
-<p>fruits-component works!</p>
+<ul class="list-group">
+  @for (fruit of fruits; track fruit.name) {
+    <li class="list-group-item">
+      {{ fruit.emoji }}
+      {{ fruit.name }}
+    </li>
+  } @empty {
+    <li class="list-group-item text-muted">Nessun frutto in lista</li>
+  }
+</ul>
