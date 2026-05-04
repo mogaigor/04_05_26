@@ -1,1 +1,9 @@
-<p>generic works!</p>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let animal of genVect">
+    <span class="me-2">{{ animal.emoji }}</span>
+    {{ animal.name }}
+  </li>
+  <li class="list-group-item text-muted" *ngIf="genVect.length === 0">
+    Nessun animale in lista
+  </li>
+</ul>
