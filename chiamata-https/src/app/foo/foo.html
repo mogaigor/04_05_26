@@ -1,7 +1,20 @@
-<h2>Basic Request</h2>
-<button type="button" (click)="makeRequest()">Make Request</button>
-@if(loading)
-{
-    <div>loading...</div>
+<h2>HTTP Requests Lab</h2>
+
+<div class="actions">
+    <button type="button" (click)="makeRequest()">Make GET Request</button>
+    
+    <button type="button" (click)="makePost()">Make POST Request</button>
+</div>
+
+<hr>
+
+@if(loading) {
+    <div class="loader">
+        <strong>Attenzione: caricamento in corso...</strong>
+    </div>
 }
-<pre>{{data | json}}</pre>
+
+<div class="result">
+    <h3>Risultato JSON:</h3>
+    <pre>{{ data | json }}</pre>
+</div>
