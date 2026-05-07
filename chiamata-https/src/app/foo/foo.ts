@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { JsonPipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -11,11 +11,13 @@ import { Observable } from 'rxjs';
 })
 
 export class FooComponent {
-  data!: Object; 
+  data: Object; 
   loading: boolean = false;
   o!: Observable<Object>;
 
-  constructor(public http: HttpClient) {}
+  constructor(public http: HttpClient, private cdr: ChangeDetectorRef) {
+    this.data = {userId: 1};
+  }
 
   // --- METODO GET ---
   makeRequest(): void {
@@ -27,8 +29,10 @@ export class FooComponent {
 
   // Callback per la gestione dati
   getData = (d: Object) => {
-    this.data = new Object(d);
+    console.log("Dati ricevuti:", d);
+    this.data = d;
     this.loading = false;
+    this.cdr.detectChanges(); //Ti forzo a controllare se ci sono cambiamenti da fare al DOM, in questo caso per aggiornare la variabile data e loading
   }
 
   // --- METODO POST ---
